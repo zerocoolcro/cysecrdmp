@@ -1,0 +1,156 @@
+Everything starts with: "print("Hello World")"
+We can control what is output to the screen by using the print() statement. 
+Anything inside the parenthesis () will be output. However, because we are 
+printing a string we have to put them inside of quotations "".
+
+Using Python, we can code our calculator; after all, programming is just writing rules for the computer to follow given specific inputs and conditions. The table below shows the different operations.
+Operator	Syntax	Example
+Addition	  +	    1 + 1 = 2
+Subtraction	-	    5 - 1 = 4
+Multiply    *	    10 * 10 = 100
+Division	  /	    10 / 2 = 5
+Modulus	    %	    10 % 2 = 0
+Exponent	 **	    5**2 = 25 (52)
+Now that we know basic mathematical operators, let's move on to comparison operators; 
+these play a big part in Python and will be built upon when we look at loops and if statements.
+These operators are used to evaluate a program's condition at a particular state.
+Symbol	     Syntax
+Greater than	>
+Less than	    <
+Equal to	    ==
+Not Equal to	!=
+Greater than or equal to	>=
+Less than or equal	      <=
+
+Variables allow you to store and update data in a computer program. You have a variable name and store data to that name.
+food = "ice cream"
+money = 2000
+Variables are powerful as you can change them throughout your program.
+The following example sets the age variable to 30, then we increase this age variable by 1, making the final variable data 31. 
+age = 30
+age = age + 1
+print(age)
+Let's talk about Data Types, which is the type of data being stored in a variable. You can store text, or numbers, and many other types. The data types to know are:
+String - Used for combinations of characters, such as letters or symbols
+Integer - Whole numbers
+Float - Numbers that contain decimal points or for fractions
+Boolean - Used for data that is restricted to True or False options
+List - Series of different data types stored in a collection
+
+Logical operators allow assignment and comparisons to be made and are used in conditional testing (such as if statements).
+Logical Operation	  Operator	  Example
+Equivalence	           ==	      if x == 5
+Less than	              <	      if x < 5
+Less than or equal to	 <=	      if x <= 5
+Greater than	          >	      if x > 5
+Greater than or equal to	>=	  if x >= 5
+
+Boolean operators are used to connect and compare relationships between statements. Like an if statement, conditions can be true or false.
+Boolean Operation	                                        Operator	           Example
+Both conditions must be true for the statement to be true	  AND	         if x >= 5 AND x <= 100Returns TRUE if x isa number between 5 and 100
+Only one condition of the statement needs to be true 	      OR	         if x == 1 OR x == 10Returns TRUE if X is 1 or 10
+If a condition is the opposite of an argument	              NOT	         if NOT yReturns TRUE if the y value is False 
+
+Let's look at a few Python code examples:
+
+a = 1
+if a == 1 or a > 10:
+    print("a is either 1 or above 10")
+
+name = "bob" 
+hungry = True
+if name == "bob" and hungry == True:
+    print("bob is hungry")
+elif name == "bob" and not hungry:
+    print("Bob is not hungry")
+else: # If all other if conditions are not met
+    print("Not sure who this is or if they are hungry") 
+
+Using "if statements" allows programs to make decisions. They let a program make a decision based on a condition
+if age < 17:
+    print('You are NOT old enough to drive')
+else:
+    print('You are old enough to drive')
+In the example, if you are younger than 17, the program will output the text "You are NOT old enough to drive"; however, if you are over the age of 17, the program will output "You are old enough to drive"
+
+In programming, loops allow programs to iterate and perform actions a number of times. There are two types of loops, for and while loops:
+
+While Loops
+Let's begin by looking at how we structure a while loop. We can have the loop run indefinitely or (similar to an if statement) determine how many times the loop should run based on a condition.
+i = 1
+while i <= 10:
+     print(i)
+     i = i + 1
+This while loop will run 10 times, outputting the value of the i variable each time it iterates (loops). Let's break this down:
+The i variable is set to 1
+The while statement specifies where the start of the loop should begin
+Every time it loops, it will start at the top (outputting the value of i)
+Then it goes to the next line in the loop, which increases the value of i by 1
+Then (as there is no more code for the program to execute), it goes to the top of the loop, starting the process over again
+The program will keep on looping until the value of the i variable is greater than 10
+
+For Loops
+A for loop is used to iterate over a sequence such as a list. Lists are used to store multiple items in a single variable, 
+and are created using square brackets (see below). Let's learn through the following example:
+websites = ["facebook.com", "google.com", "amazon.com"]
+for site in websites:
+     print(site)
+This for loop shown in the code block above, will run 3 times, outputting each website in the list. Let's break this down:
+The list variable called websites is storing 3 elements
+The loop iterates through each element, printing out the element
+The program stops looping when it's been through each element in the loop
+To give a real-world scenario, you could create a program that checks if a website is online or if an item is in stock. 
+You would loop through the website list, add functionality inside the loop to check the website, and output the results. 
+The "Python for Pentesters" room shows you how to use Python to enumerate a target, build a keylogger, scan a network, and more.
+
+In Python, we can also iterate through a range of numbers using the range function. Below is some example Python code that will print the numbers from 0 to 4. 
+In programming, 0 is often the starting number, so counting to 5 is 0 to 4 (but has 5 numbers: 0, 1, 2, 3, and 4)
+for i in range(5):
+     print(i)
+
+Functions:
+As programs start to get bigger and more complex, some of your code will be repetitive, writing the same code to do the same calculations,
+and this is where functions come in. A function is a block of code that can be called at different places in your program.
+def sayHello(name):
+     print("Hello " + name + "! Nice to meet you.")
+sayHello("ben") # Output is: Hello ben! Nice to meet you
+
+def calcCost(item):
+     if(item == "sweets"):
+          return 3.99
+     elif (item == "oranges"):
+          return 1.99
+     else:
+          return 0.99
+spent = 10
+spent = spent + calcCost("sweets")
+print("You have spent:" + str(spent))
+
+result: You have spent:13.99
+
+Files:
+# write 
+with open("example.txt", "w") as file:
+    file.write("Hello, world!\n")
+    file.write("This is a test file.")
+We open the example.txt file in writing mode. If the file does not exist, Python will create it. 
+The text we write using file.write() will be saved to a file.
+
+# read
+with open("example.txt", "r") as file:
+    content = file.read()
+    print("File content:\n", content)
+We open the same file again in read mode and use file.read() to accept the contents.
+
+Imports
+In Python, we can import libraries, which are a collection of files that contain functions.
+We import other libraries using the import keyword.
+Here are some popular libraries you may find useful in scripting as a pentester:
+Request - simple HTTP library.
+Scapy - send, sniff, dissect and forge network packets
+Pwntools - a CTF & exploit development library.
+Many of these libraries are already built into the programming language; however, 
+libraries written by other programmers not already installed in your machine can be installed using an application called pip, 
+which is Python's package manager. Let's say you want to install the "scapy" library (which allows you to craft your own packets 
+in code and send them to other machines); you install it first by running the command pip install scapy, 
+after which in your program you can now import the scapy library.
