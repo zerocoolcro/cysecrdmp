@@ -41,6 +41,7 @@ Now in the future, if we find ourselves in a different location, we can just use
 No need to consistently use "cd" and "ls" to find out what is where. Instead, we can use commands such as "find" to automate things like this for us!
 In this case, we're looking for "myfile.txt"
 If we remember the filename, we can simply use "find -name myfile.txt" where the command will look through every folder in our current directory.
+If we want to search whole system for file, we use command: "sudo find / -name "welcome.txt"".
 Let's say that we don't know the name of the file, or want to search for every file that has an extension such as ".txt".
 We will construct a command such as "find -name *.txt". Where "Find" has been able to find every .txt file and has then given us the location of each one.
 
