@@ -1,0 +1,20 @@
+Social Engineering is the term used to describe any cyberattack where a human (rather than a computer) is the target;
+for this reason, it is sometimes referred to as "People Hacking". 
+For example, if an attacker wishes to obtain a victim's password, they could attempt to guess or brute-force the password 
+or they could simply ask you.
+
+Whilst the example linked above is relatively straightforward, social engineering attacks can become very complex and often 
+result in an attacker gaining significant control over a target's life — both online and offline. Social engineering attacks are often 
+multi-layered and escalate due to the snowball effect. For example, an attacker may start off by obtaining a small amount of publicly 
+available information from a victim's social media presence, which they could then use to get more information from, say, your phone or broadband provider.
+The information obtained from the second stage could then be used to gain more useful information,
+then escalate step-by-step to something like the victim's bank account.
+
+Charismatic hackers calling your phone company and taking possession of your account is one form of social engineering; however, 
+there are many Decorative image of a USB driveother types. Social engineering is a vast topic, encompassing any attack that relies 
+on tricking humans into giving the attacker access, rather than attacking the technology directly. Whilst direct interaction with 
+targets is the most common style of social engineering, other examples include dropping USB storage devices in public (e.g. in company car parks) 
+in the hope that someone (often a company employee) will pick one up and plug it into a sensitive computer. In a similar vein, attackers may 
+leave a "charging cable" plugged into a socket in a public place. 
+In actuality, the cable contains malicious software such as keyloggers or tools to take control of the victim's device.
+
