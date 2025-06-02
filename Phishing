@@ -1,0 +1,38 @@
+Phishing is a sub-section of social engineering. Whereas social engineering is a very general term used to describe any attack that takes advantage of a human rather than a computer system, 
+phishing specifically describes attacks whereby a scammer or other attacker tricks a victim into opening a malicious webpage by sending them a text message, email, or another form of online correspondence. 
+Traditionally, "phishing" simply referred to emails; however, in the days of instant messaging, text messages, and voice/video calling, the term has evolved to blanket these other categories. 
+These other forms are sometimes referred to individually as "smishing" — phishing over SMS — and "vishing" — phishing over voice chat — respectively.
+
+General Phishing
+A simple, mass phishing attack which doesn't target anyone in particular, although they may aim for large groups (e.g. PayPal users, or Amazon customers). 
+These large-scale campaigns are usually simple and are generally (but not always) fairly easy to spot as the messages and malicious sites are often not very well crafted 
+and frequently contain many immediately visible errors.
+
+Spearphishing
+More targeted than general phishing, spearphishing aims for an individual or small group (e.g. employees of a specific company). 
+Spearphishing campaigns are generally better crafted than the correspondence and malicious sites used in general phishing as they are designed to target a particular group, 
+often as part of a more extensive campaign against the target.
+
+Whaling
+Even more specific than spearphishing, whaling targets high-value individuals (e.g. a C-Suite executive in a target company). 
+The messages are generally extremely well crafted and tend to be very hard to spot.
+
+Example of general phishing:
+An example of a popular general phishing scenario (or "pretext") would be receiving an email purportedly from "Amazon", informing you that your account has been used to buy a very costly item (e.g. the latest iPad). 
+You are then provided with a link to view your purchase history. The link looks like it goes to https://amazon.co.uk but will actually take you to an attacker-controlled web application 
+(that looks identical to the Amazon login page), asking you to enter your Amazon credentials. When you enter your credentials, you get redirected to the real Amazon orders page, 
+where you find that there are no unauthorised purchases... yet. 
+The attacker will then use your duly provided credentials to actually order expensive items with your account.
+
+1. The attacker sends out a malicious phishing email campaign
+2. Prospective victims receive the emails — some of them open the email and click the link
+3. The victims enter their credentials into the attacker's fake web page
+4. The web page stores the credentials or sends them directly to the attacker
+5. The attacker uses the credentials to access the site, thus taking over the victims' accounts
+
+Phishing attacks work best when the malicious web page mimics an existing (usually well-known) web page. 
+For this reason, attackers/scammers will usually use one of many freely available tools to simply clone an existing page, which can then be edited at their leisure.
+
+The end goal of a phishing attack can vary significantly depending on who is performing the attack. 
+For example, a low-level scammer may simply be after sensitive information (e.g., bank details), 
+whereas a high-powered group of malicious hackers may be targeting a specific organisation with the intention of causing further damage.
