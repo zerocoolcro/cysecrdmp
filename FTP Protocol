@@ -1,0 +1,42 @@
+File Transfer Protocol (FTP) is, as the name suggests , a protocol used to allow remote transfer of files over a network. 
+It uses a client-server model to do this, and- as we'll come on to later- relays commands and data in a very efficient way.
+
+How does FTP work?
+A typical FTP session operates using two channels:
+  a command (sometimes called the control) channel
+  a data channel.
+As their names imply, the command channel is used for transmitting commands as well as replies to those commands, while the data channel is used for transferring data.
+
+FTP operates using a client-server protocol. The client initiates a connection with the server, the server validates whatever login credentials are provided and then opens the session.
+
+The FTP server may support either Active or Passive connections, or both. 
+
+In an Active FTP connection, the client opens a port and listens. The server is required to actively connect to it. 
+In a Passive FTP connection, the server opens a port and listens (passively) and the client connects to it. 
+This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish. 
+If both channels were interlinked, you could only enter commands in between data transfers, which wouldn't be efficient for either large file transfers, or slow internet connections.
+
+Check to see if we are able to login anonymously to the FTP server. We can do this using by typing "ftp [IP]" into the console.
+
+Similarly to Telnet, when using FTP both the command and data channels are unencrypted. Any data sent over these channels can be intercepted and read.
+
+If we have a possible username, we can try and bruteforce the password of the FTP Server with Hydra:
+"hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV 10.10.10.6 ftp"
+
+Let's break it down:
+SECTION             FUNCTION
+
+hydra                   Runs the hydra tool
+
+-t 4                    Number of parallel connections per target
+
+-l [user]               Points to the user who's account you're trying to compromise
+
+-P [path to dictionary] Points to the file containing the list of possible passwords
+
+-vV                     Sets verbose mode to very verbose, shows the login+pass combination for each attempt
+
+[machine IP]            The IP address of the target machine
+
+ftp / protocol          Sets the protocol.
+
